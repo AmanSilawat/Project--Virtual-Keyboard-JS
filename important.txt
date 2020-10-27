@@ -1,0 +1,30 @@
+1. npm init -y
+2. npm i -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
+3. npx install-peerdeps --dev eslint-config-airbnb
+4. sudo npm i -g eslint
+5. eslint --init (GENERATE CONFIG FILE)
+
+How would you like to use ESLint? · problems
+    ✔ What type of modules does your project use? · commonjs
+    ✔ Which framework does your project use? · none
+    ✔ Does your project use TypeScript? · No / Yes
+    ✔ Where does your code run? · browser✔ What format do you want your config file to be in? · JSON
+
+6. index.js   -> open problems tab
+7. type express = requer('express')
+    ||| show some erroros in problems tab ->
+        1. "Unable to resolve path ot module 'express'"
+        2. unsed variable error
+8 . install express to remove 1 error
+9. remove some error change in .eslintrc.json to change eslint rule
+    ||| json ->
+    {
+        "extends": ["airbnb","prettier" ],
+        "plugins": ["prettier"],
+        "rules": {
+            "no-unused-vars": "warn"
+        }
+    }
+
+10. "plugin:node/recommended" add in extends: handle node type error on eslint
+11. hide error process.exit(); because -> there are cases where i use process exit for instance when i use MongoDB and you know the databse fails with authentication or whatever i like to exit with a failure.
