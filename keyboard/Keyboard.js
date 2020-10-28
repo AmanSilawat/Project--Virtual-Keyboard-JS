@@ -38,8 +38,8 @@ const Keyboard = {
         // Automatically use keyboard for element with .use-keyboard-input
         document.querySelectorAll('.use-keyboard-input').forEach((element) => {
             element.addEventListener('focus', () => {
+                this.properties.value = element.value;
                 this.open(element.value, (currentValue) => {
-                    console.log(currentValue + "-------------------");
                     element.value = currentValue;
                 });
             });
@@ -49,16 +49,55 @@ const Keyboard = {
     _createKeys() {
         const fragment = document.createDocumentFragment();
         const keyLayout = [
-            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
-            "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
-            "caps", "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter",
-            "done", "z", "x", "c", "v", "b", "n", "m", ",", ".", "?",
-            "space"
+            '1',
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '0',
+            'backspace',
+            'q',
+            'w',
+            'e',
+            'r',
+            't',
+            'y',
+            'u',
+            'i',
+            'o',
+            'p',
+            'caps',
+            'a',
+            's',
+            'd',
+            'f',
+            'g',
+            'h',
+            'j',
+            'k',
+            'l',
+            'enter',
+            'done',
+            'z',
+            'x',
+            'c',
+            'v',
+            'b',
+            'n',
+            'm',
+            ',',
+            '.',
+            '?',
+            'space',
         ];
 
         // Create HTML for an icon
-        const createIconHTML = (icon_name) => {
-            return `<i class="material-icons">${icon_name}</i>`;
+        const createIconHTML = (iconName) => {
+            return `<i class="material-icons">${iconName}</i>`;
         };
 
         keyLayout.forEach((key) => {
@@ -66,7 +105,7 @@ const Keyboard = {
             const insertLineBreak =
                 ['backspace', 'p', 'enter', '?'].indexOf(key) !== -1;
 
-            //Add attributes/ classes
+            // Add attributes/ classes
             keyElement.setAttribute('type', 'button');
             keyElement.classList.add('keyboard__key');
 
@@ -157,7 +196,7 @@ const Keyboard = {
     },
 
     _triggerEvent(handlerName) {
-        if (typeof this.eventHandlers[handlerName] == 'function') {
+        if (typeof this.eventHandlers[handlerName] === 'function') {
             this.eventHandlers[handlerName](this.properties.value);
         }
     },

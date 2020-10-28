@@ -1,12 +1,15 @@
 const express = require('express');
 
+const path = require('path');
+
 const app = express();
 
+app.set('view engine', 'html');
+
 app.get('/', function (req, res) {
-  res.send('hello');
-  process.exit(1);
+    res.sendFile(path.join(`${__dirname}/index.html`));
 });
 
 app.listen(3000, () => {
-  console.log('App listening on poat 3000!');
+    console.log('App listening on poat 3000!');
 });
