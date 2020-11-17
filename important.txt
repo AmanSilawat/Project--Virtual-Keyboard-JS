@@ -8,7 +8,8 @@ How would you like to use ESLint? · problems
     ✔ What type of modules does your project use? · commonjs
     ✔ Which framework does your project use? · none
     ✔ Does your project use TypeScript? · No / Yes
-    ✔ Where does your code run? · browser✔ What format do you want your config file to be in? · JSON
+    ✔ Where does your code run? · browser
+    ✔ What format do you want your config file to be in? · JSON
 
 6. index.js   -> open problems tab
 7. type express = requer('express')
@@ -18,13 +19,26 @@ How would you like to use ESLint? · problems
 8 . install express to remove 1 error
 9. remove some error change in .eslintrc.json to change eslint rule
     ||| json ->
-    {
-        "extends": ["airbnb","prettier" ],
-        "plugins": ["prettier"],
-        "rules": {
-            "no-unused-vars": "warn"
-        }
+{
+    "extends": [ "airbnb", "prettier", "plugin:node/recommended"],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "plugins": [ "prettier" ],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "tabWidth": 4,
+                "singleQuote": true
+            }
+        ],
+        "semi": "error",
+        "no-console": "warn",
+        "prefer-const": "warn"
     }
+}
 
 10. "plugin:node/recommended" add in extends: handle node type error on eslint
 11. hide error process.exit(); because -> there are cases where i use process exit for instance when i use MongoDB and you know the databse fails with authentication or whatever i like to exit with a failure.
